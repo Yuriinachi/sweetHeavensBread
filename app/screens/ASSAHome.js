@@ -29,29 +29,8 @@ const ASSAHome = ({ navigation }) => {
       }}
     >
       <StatusBar backgroundColor={colors.darkgreen} />
-      <View
-        style={{
-          backgroundColor: colors.darkgreen,
-          width: responsiveScreenWidth(100),
-          height: responsiveScreenHeight(13),
-          marginTop: "-15%",
-        }}
-      />
-      <View
-        style={{
-          backgroundColor: colors.lightgreen,
-          width: responsiveWidth(100),
-          height: responsiveHeight(2),
-        }}
-      />
-      <View
-        style={{
-          backgroundColor: colors.fill,
-          width: responsiveWidth(100),
-          height: responsiveHeight(100),
-        }}
-      />
-      <Text style={styles.header}>HOME PAGE</Text>
+      
+      
       {/* <View
         style={{
           width: responsiveWidth(90),
@@ -89,7 +68,7 @@ const ASSAHome = ({ navigation }) => {
           />
           <CustomButton
             label={"SWMS"}
-            onPress={() => navigation.navigate("SearchBar")}
+            onPress={() => navigation.navigate("Search")}
           />
         </View>
       </View> */}
@@ -110,52 +89,12 @@ const ASSAHome = ({ navigation }) => {
           />
           <CustomButton
             label={"LIVE CHAT"}
-            onPress={() => navigation.navigate("SearchBar")}
+            onPress={() => navigation.navigate("Search")}
           />
         </View>
       </View>
-      <View
-        style={{
-          width: responsiveWidth(15),
-          height: responsiveHeight(10),
-          justifyContent: "center",
-          position: "absolute",
-          bottom: responsiveHeight(87),
-          left: responsiveWidth(10),
-        }}
-      >
-        <ImageBackground
-          style={styles.profile}
-          source={require("../assets/images/Dicks.png")}
-        >
-          <CustomButton
-            label={"FUCK YOU"}
-            onPress={() => navigation.navigate("Main")}
-          />
-        </ImageBackground>
-      </View>
-      <View
-        style={{
-          width: responsiveWidth(15),
-          height: responsiveHeight(10),
-          justifyContent: "center",
-          position: "absolute",
-          bottom: responsiveHeight(87),
-          left: responsiveWidth(80),
-        }}
-      >
-        <View>
-          <Image
-            style={styles.profile}
-            source={require("../assets/images/Dicks.png")}
-          />
-          <CustomButton
-            style={{ zIndex: 0 }}
-            label={""}
-            onPress={() => navigation.navigate("SearchBar")}
-          />
-        </View>
-      </View>
+      
+      
       <View
         style={{
           width: responsiveWidth(90),
@@ -173,7 +112,7 @@ const ASSAHome = ({ navigation }) => {
           />
           <CustomButton
             label={"KILL"}
-            onPress={() => navigation.navigate("SearchBar")}
+            onPress={() => navigation.navigate("Search")}
           />
         </View>
       </View>
@@ -194,7 +133,7 @@ const ASSAHome = ({ navigation }) => {
           />
           <CustomButton
             label={"PLS"}
-            onPress={() => navigation.navigate("SearchBar")}
+            onPress={() => navigation.navigate("Search")}
           />
         </View>
       </View>

@@ -89,7 +89,7 @@ const App = ({navigation}) => {
           options={{ headerShown: false }}
         />
         <Stack.Screen
-          name="SearchBar"
+          name="Search"
           component={SearchScreen}
           
         />
