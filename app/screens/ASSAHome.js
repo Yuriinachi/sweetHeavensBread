@@ -215,7 +215,7 @@ const ASSAHome = ({ navigation }) => {
           />
           <CustomButton
             label={"ME"}
-            onPress={() => navigation.navigate("SearchBar")}
+            onPress={() => navigation.navigate("SWMS")}
           />
         </View>
       </View>

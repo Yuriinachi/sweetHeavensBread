@@ -97,20 +97,37 @@ const App = ({navigation}) => {
           name="SWMS"
           component={SwmsScreen}
           options={{
-            headerBackVisible: true,
             headerLeft: () => (
-              <Button
-                onPress={() => alert('This is the borigr menu')}
-                title="Borgir"
-                color="#00cc00"
+              <Pressable
+              android_ripple={{
+                color: '#666666',
+                foreground: true,
+                borderless: true,
+              }}
+              onPress={() => {navigation.openDrawer()}}>
+              <Ionicon
+                style={{paddingLeft: 10, color: "white"}}
+                name={Platform.OS === 'ios' ? 'ios-menu' : 'md-menu'}
+                size={35}
               />
+            </Pressable>
             ),
+          
             headerRight: () => (
-              <Button
-                onPress={() => alert('This is the profile btn')}
-                title='Profile'
-                color="#00cc00"
-                />
+              <Pressable
+              android_ripple={{
+                color: '#ffffff',
+                foreground: true,
+                borderless: true,
+              }}
+              onPress={() => alert('This is profile')} >
+              <Ionicon 
+                style={{paddingLeft: 10, color: "white"}}
+                name='person-circle-sharp'
+                size={35}
+              
+              />
+            </Pressable>
             )
           }}
           
