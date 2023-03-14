@@ -216,4 +216,4 @@ const styles = StyleSheet.create({
   },
 });
 export default ASSAHome;
-// We are some lucky motherfuckers
+// We are some lucky motherfuckers .
