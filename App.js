@@ -8,9 +8,9 @@
 // ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⡀⠀⠀⠀⠀⠤⠠⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 import * as React from "react";
 import { View, Text, TouchableOpacity, Button, Pressable } from "react-native";
-import { NavigationContainer } from "@react-navigation/native";
+import { NavigationContainer, useNavigation } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { createDrawerNavigator } from '@react-navigation/drawer';
+import { createDrawerNavigator, DrawerItem } from '@react-navigation/drawer';
 import WelcomeScreen from "./app/screens/WelcomeScreen";
 import ViewImageScreen from "./app/screens/ViewImageScreen";
 import RegisterScreen from "./app/screens/RegisterScreen";
@@ -21,13 +21,25 @@ import colors from "./app/config/colors";
 import Ionicon from "react-native-vector-icons/Ionicons";
 
 const Stack = createNativeStackNavigator();
-
 const Drawer = createDrawerNavigator();
 
-
-const App = ({navigation}) => {
+function Borgir() {
+  
+  return(
+    <Drawer.Navigator initialRouteName="Borgirr">
+         <Drawer.Screen name="Borgir" component={ASSAHome}  />
+         <Drawer.Screen name="SWMS" component={SwmsScreen} />
+       </Drawer.Navigator>
+    
+    )
+  }
+  
+  
+  const App = ({ navigation }) =>  {
+   
   return (
     <NavigationContainer>
+      
       <Stack.Navigator
       initialRouteName="ASSA"
       screenOptions={{  headerStyle: {
@@ -56,7 +68,7 @@ const App = ({navigation}) => {
                 foreground: true,
                 borderless: true,
               }}
-              onPress={() => {navigation.openDrawer()}}>
+              onPress={() => {navigation.toggleDrawer()}}>
               <Ionicon
                 style={{paddingLeft: 10, color: "white"}}
                 name={Platform.OS === 'ios' ? 'ios-menu' : 'md-menu'}
