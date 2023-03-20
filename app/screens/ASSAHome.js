@@ -10,6 +10,7 @@ import {
   ImageBackground,
 } from "react-native";
 
+// Device relative dimensions
 import {
   responsiveHeight,
   responsiveWidth,
@@ -17,9 +18,11 @@ import {
   responsiveScreenWidth,
 } from "react-native-responsive-dimensions";
 
+// Seperate Component for buttons located in assests
 import CustomButton from "../assets/components/CustomButton";
-import colors from "../config/colors";
-import SVGimg from "../assets/images/assalogo.svg";
+import colors from "../config/colors"; {/*Constant config color*/}
+import SVGimg from "../assets/images/assalogo.svg";{/*ASSA logo at the bottom*/}
+import { Component } from "react/cjs/react.production.min";
 
 const ASSAHome = ({ navigation }) => {
   return (

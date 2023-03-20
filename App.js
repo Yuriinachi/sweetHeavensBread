@@ -23,6 +23,7 @@ import Ionicon from "react-native-vector-icons/Ionicons";
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
 
+// Burger menu
 function Borgir() {
   
   return(
@@ -34,12 +35,14 @@ function Borgir() {
     )
   }
   
-  
+  // main app with navigation
   const App = ({ navigation }) =>  {
    
   return (
-    <NavigationContainer>
+    // Function 
+    <NavigationContainer> 
       
+      {/* Parent component */}
       <Stack.Navigator
       initialRouteName="ASSA"
       screenOptions={{  headerStyle: {
@@ -52,6 +55,7 @@ function Borgir() {
         fontWeight: 'bold',
       }, 
     }}>
+        {/* Child component */}
         <Stack.Screen
           name="Main"
           component={WelcomeScreen}

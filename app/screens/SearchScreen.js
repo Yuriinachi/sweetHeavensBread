@@ -11,6 +11,8 @@ const SearchScreen = ({ navigaton }) => {
   onPress={() => alert("onPress")}
   onChangeText={(text) => console.log(text)}
 />
+
+    {/* Need to add filter */}
     </SafeAreaView>
 
   )
