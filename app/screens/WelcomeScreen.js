@@ -88,7 +88,7 @@ const WelcomeScreen = ({ navigation }) => {
 
         <CustomButton
           label={"Login"}
-          onPress={() => navigation.navigate("Home")}
+          onPress={() => navigation.navigate("ASSA")}
         />
 
         {/* <View

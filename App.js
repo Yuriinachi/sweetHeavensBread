@@ -8,7 +8,7 @@
 // ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⡀⠀⠀⠀⠀⠤⠠⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 import * as React from "react";
 import { View, Text, TouchableOpacity, Button, Pressable } from "react-native";
-import { NavigationContainer, useNavigation } from "@react-navigation/native";
+import { NavigationContainer, useNavigation, useNavigationContainerRef, DrawerActions } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createDrawerNavigator, DrawerItem } from '@react-navigation/drawer';
 import WelcomeScreen from "./app/screens/WelcomeScreen";
@@ -23,24 +23,34 @@ import Ionicon from "react-native-vector-icons/Ionicons";
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
 
-// Burger menu
-function Borgir() {
-  
+
+function Borgir ({}) {
   return(
-    <Drawer.Navigator initialRouteName="Borgirr">
-         <Drawer.Screen name="Borgir" component={ASSAHome}  />
-         <Drawer.Screen name="SWMS" component={SwmsScreen} />
-       </Drawer.Navigator>
-    
-    )
+  <Drawer.Navigator>
+    <Drawer.Screen name="Home" component={ASSAHome} options={{headerShown: false}}  />
+    <Drawer.Screen name="Search" component={SearchScreen} options={{headerShown: false}}/>
+    <Drawer.Screen name="SWMS" component={SwmsScreen} options={{headerShown: false}}/>
+    {/* <Drawer.Screen name="Live Chat" */}
+  </Drawer.Navigator>
+  );
+}
+
+function navigate(name, params) {
+  if (navigationRef.isReady()) {
+    // Perform navigation if the react navigation is ready to handle actions
+    navigationRef.navigate(name, params);
+  } else {
+    // You can decide what to do if react navigation is not ready
+    // You can ignore this, or add these actions to a queue you can call later
   }
-  
+}
+
   // main app with navigation
   const App = ({ navigation }) =>  {
-   
+    const navigationRef = useNavigationContainerRef();
   return (
     // Function 
-    <NavigationContainer> 
+    <NavigationContainer ref={navigationRef}> 
       
       {/* Parent component */}
       <Stack.Navigator
@@ -53,6 +63,7 @@ function Borgir() {
       headerTintColor: 'white',
       headerTitleStyle: {
         fontWeight: 'bold',
+
       }, 
     }}>
         {/* Child component */}
@@ -62,9 +73,10 @@ function Borgir() {
           options={{ headerShown: false}}
         />
         <Stack.Screen
-          name="Home"
-          component={ASSAHome}
+          name="ASSA"
+          component={Borgir}
           options={{
+            
             headerLeft: () => (
               <Pressable
               android_ripple={{
@@ -72,7 +84,7 @@ function Borgir() {
                 foreground: true,
                 borderless: true,
               }}
-              onPress={() => {navigation.toggleDrawer()}}>
+              onPress={() => {navigationRef.dispatch(DrawerActions.toggleDrawer());}}>
               <Ionicon
                 style={{paddingLeft: 10, color: "white"}}
                 name={Platform.OS === 'ios' ? 'ios-menu' : 'md-menu'}
@@ -107,44 +119,45 @@ function Borgir() {
         <Stack.Screen
           name="Search"
           component={SearchScreen}
-          
+          options={{headerBackVisible: true,}}
         />
         <Stack.Screen
           name="SWMS"
           component={SwmsScreen}
           options={{
-            headerLeft: () => (
-              <Pressable
-              android_ripple={{
-                color: '#666666',
-                foreground: true,
-                borderless: true,
-              }}
-              onPress={() => {navigation.openDrawer()}}>
-              <Ionicon
-                style={{paddingLeft: 10, color: "white"}}
-                name={Platform.OS === 'ios' ? 'ios-menu' : 'md-menu'}
-                size={35}
-              />
-            </Pressable>
-            ),
+            headerBackVisible: true,
+            // headerLeft: () => (
+            //   <Pressable
+            //   android_ripple={{
+            //     color: '#666666',
+            //     foreground: true,
+            //     borderless: true,
+            //   }}
+            //   onPress={() => {navigationRef.navigate("Home")}}>
+            //   <Ionicon
+            //     style={{paddingLeft: 10, color: "white"}}
+            //     name={Platform.OS === 'ios' ? 'ios-menu' : 'md-menu'}
+            //     size={35}
+            //   />
+            // </Pressable>
+            // ),
           
-            headerRight: () => (
-              <Pressable
-              android_ripple={{
-                color: '#ffffff',
-                foreground: true,
-                borderless: true,
-              }}
-              onPress={() => alert('This is profile')} >
-              <Ionicon 
-                style={{paddingLeft: 10, color: "white"}}
-                name='person-circle-sharp'
-                size={35}
+            // headerRight: () => (
+            //   <Pressable
+            //   android_ripple={{
+            //     color: '#ffffff',
+            //     foreground: true,
+            //     borderless: true,
+            //   }}
+            //   onPress={() => alert('This is profile')} >
+            //   <Ionicon 
+            //     style={{paddingLeft: 10, color: "white"}}
+            //     name='person-circle-sharp'
+            //     size={35}
               
-              />
-            </Pressable>
-            )
+            //   />
+            // </Pressable>
+            // )
           }}
           
         />
