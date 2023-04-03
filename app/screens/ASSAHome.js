@@ -115,7 +115,7 @@ const ASSAHome = ({ navigation }) => {
           />
           <CustomButton
             label={"KILL"}
-            onPress={() => navigation.navigate("Search")}
+            onPress={() => navigation.navigate("Profile")}
           />
         </View>
       </View>

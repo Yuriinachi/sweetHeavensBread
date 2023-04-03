@@ -11,13 +11,19 @@ import { View, Text, TouchableOpacity, Button, Pressable } from "react-native";
 import { NavigationContainer, useNavigation, useNavigationContainerRef, DrawerActions } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createDrawerNavigator, DrawerItem } from '@react-navigation/drawer';
+
 import WelcomeScreen from "./app/screens/WelcomeScreen";
 import ViewImageScreen from "./app/screens/ViewImageScreen";
 import RegisterScreen from "./app/screens/RegisterScreen";
 import ASSAHome from "./app/screens/ASSAHome";
 import SearchScreen from "./app/screens/SearchScreen";
 import SwmsScreen from "./app/screens/SwmsScreen";
+import OnlineCheckAndForms from "./app/screens/OnlineCheckAndForms";
+import ProfileScreen from "./app/screens/ProfileScreen";
+import CheckAndForms from "./app/screens/OnlineCheckAndForms";
+
 import colors from "./app/config/colors";
+
 import Ionicon from "react-native-vector-icons/Ionicons";
 
 const Stack = createNativeStackNavigator();
@@ -26,10 +32,21 @@ const Drawer = createDrawerNavigator();
 
 function Borgir ({}) {
   return(
-  <Drawer.Navigator>
+  <Drawer.Navigator
+    screenOptions={{ drawerInactiveBackgroundColor: colors.darkgreen, 
+      drawerInactiveTintColor: colors.fill, 
+      drawerActiveBackgroundColor: colors.fill, 
+      drawerActiveTintColor: "#000000",
+    drawerStyle: {
+      backgroundColor: colors.darkgreen
+    },
+  }}
+  >
     <Drawer.Screen name="Home" component={ASSAHome} options={{headerShown: false}}  />
     <Drawer.Screen name="Search" component={SearchScreen} options={{headerShown: false}}/>
     <Drawer.Screen name="SWMS" component={SwmsScreen} options={{headerShown: false}}/>
+    <Drawer.Screen name= "Online Checklists and Forms" component={OnlineCheckAndForms} options={{headerShown: false}} />
+    <Drawer.Screen name= "Checklists and Forms" component={CheckAndForms} options={{headerShown: false}} />
     {/* <Drawer.Screen name="Live Chat" */}
   </Drawer.Navigator>
   );
@@ -54,7 +71,7 @@ function navigate(name, params) {
       
       {/* Parent component */}
       <Stack.Navigator
-      initialRouteName="ASSA"
+      initialRouteName="Home"
       screenOptions={{  headerStyle: {
         backgroundColor: colors.darkgreen,
       },
@@ -76,7 +93,6 @@ function navigate(name, params) {
           name="ASSA"
           component={Borgir}
           options={{
-            
             headerLeft: () => (
               <Pressable
               android_ripple={{
@@ -111,6 +127,10 @@ function navigate(name, params) {
             )
           }}
         />
+        <Stack.Screen 
+        name="Profile" 
+        component={ProfileScreen} />
+       
         <Stack.Screen
           name="Register"
           component={RegisterScreen}
@@ -126,38 +146,38 @@ function navigate(name, params) {
           component={SwmsScreen}
           options={{
             headerBackVisible: true,
-            // headerLeft: () => (
-            //   <Pressable
-            //   android_ripple={{
-            //     color: '#666666',
-            //     foreground: true,
-            //     borderless: true,
-            //   }}
-            //   onPress={() => {navigationRef.navigate("Home")}}>
-            //   <Ionicon
-            //     style={{paddingLeft: 10, color: "white"}}
-            //     name={Platform.OS === 'ios' ? 'ios-menu' : 'md-menu'}
-            //     size={35}
-            //   />
-            // </Pressable>
-            // ),
+            headerLeft: () => (
+              <Pressable
+              android_ripple={{
+                color: '#666666',
+                foreground: true,
+                borderless: true,
+              }}
+              onPress={() => {navigationRef.dispatch(DrawerActions.toggleDrawer())}}>
+              <Ionicon
+                style={{paddingLeft: 10, color: "white"}}
+                name={Platform.OS === 'ios' ? 'ios-menu' : 'md-menu'}
+                size={35}
+              />
+            </Pressable>
+            ),
           
-            // headerRight: () => (
-            //   <Pressable
-            //   android_ripple={{
-            //     color: '#ffffff',
-            //     foreground: true,
-            //     borderless: true,
-            //   }}
-            //   onPress={() => alert('This is profile')} >
-            //   <Ionicon 
-            //     style={{paddingLeft: 10, color: "white"}}
-            //     name='person-circle-sharp'
-            //     size={35}
+            headerRight: () => (
+              <Pressable
+              android_ripple={{
+                color: '#ffffff',
+                foreground: true,
+                borderless: true,
+              }}
+              onPress={() => alert('This is profile')} >
+              <Ionicon 
+                style={{paddingLeft: 10, color: "white"}}
+                name='person-circle-sharp'
+                size={35}
               
-            //   />
-            // </Pressable>
-            // )
+              />
+            </Pressable>
+            )
           }}
           
         />
